@@ -9,12 +9,13 @@ namespace BaigiamasisDarbas.Page
 {
     public class MokiveziSearchResultPage : BasePage
     {
-        private IWebElement selectByHighestPriceText => Driver.FindElement(By.CssSelector(".text-capitalize")); //paspaudziu dropdown //span[text()='brangiausios viršuje']
+        private IWebElement selectByHighestPriceText => Driver.FindElement(By.CssSelector(".text-capitalize")); //paspaudziu dropdown
         private IWebElement orderByHighestPriceText => Driver.FindElement(By.XPath("/html/body/div[4]/div/div[1]/div/div/div[2]/div/a[5]")); //pasirenku auksciausia klaina jau surusiuota
 
         //private const string orderByHighestPriceText = "Brangiausios viršuje";
         private IWebElement closeCardPopup => Driver.FindElement(By.XPath("//button[@modal-close='cart-actions']"));
-        private IWebElement goToCart => Driver.FindElement(By.XPath("/html/body/header/div[2]/div/div/nav/div[3]/div/div[1]/div/div[1]"));
+        private IWebElement goToCart => Driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/a"));
+        private IWebElement clickPirktiPrekes => Driver.FindElement(By.XPath("/html/body/header/div[2]/div/div/nav/div[3]/div/div[1]/div/div[2]/div[3]/a[1]"));
         IReadOnlyCollection<IWebElement> results => Driver.FindElements(By.CssSelector(".row.row--small-gutter.mt-5.product-catalog-container"));
         //private SelectElement orderByDropdown => new SelectElement(Driver.FindElement(By.CssSelector(".text-capitalize")));
 
@@ -46,6 +47,7 @@ namespace BaigiamasisDarbas.Page
             IWebElement firstResultElement = results.ElementAt(0);
             string firstResultElementPrice = firstResultElement.FindElement(By.XPath("//div[@itemprop='price']")).Text;
             Assert.AreEqual(price, firstResultElementPrice, "Price is wrong");
+            CloseBrowser();
         }
         public void AddToCart()
         {
@@ -65,8 +67,13 @@ namespace BaigiamasisDarbas.Page
 
         public void GoToCart()
         {
-            GetWait().Until(driver => driver.FindElement(By.XPath("/html/body/header/div[2]/div/div/nav/div[3]/div/div[1]/div/div[1]")));
+            GetWait().Until(driver => driver.FindElement(By.XPath("/html/body/div[2]/div/div[3]/a")));
             goToCart.Click();
+        }
+        public void ClickPirktiPrekes()
+        {
+            GetWait().Until(driver => driver.FindElement(By.XPath("/html/body/header/div[2]/div/div/nav/div[3]/div/div[1]/div/div[2]/div[3]/a[1]")));
+            clickPirktiPrekes.Click();
         }
     }
 }

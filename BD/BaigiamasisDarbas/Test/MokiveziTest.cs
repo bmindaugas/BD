@@ -25,12 +25,14 @@ namespace BaigiamasisDarbas.Test
             mokiveziHomePage.SearchByText("langų ploviklis Sonax");
             mokiveziSearchResultPage.SelectByHighestPrice();
             mokiveziSearchResultPage.OrderByHighestPrice();
+            mokiveziHomePage.NumberQuantity("3");
             mokiveziSearchResultPage.AddToCart();
-            mokiveziSearchResultPage.CloseCardPopup();
+            //mokiveziSearchResultPage.CloseCardPopup();
             mokiveziSearchResultPage.GoToCart();
-            cartPage.InsertQuantity(3);
+            //mokiveziSearchResultPage.ClickPirktiPrekes();            
+            //cartPage.InsertQuantity(3);
             //cartPage.ClickPirktiPrekesButton();
-            //cartPage.VerifyIfICanBuy(50);
+            cartPage.VerifyIfICanBuy(50);
 
         }
     }

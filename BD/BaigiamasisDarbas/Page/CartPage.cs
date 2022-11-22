@@ -15,15 +15,15 @@ namespace BaigiamasisDarbas.Page
             IWebElement quantityField = Driver.FindElement(By.CssSelector(".product-quantity__input.browser-no-arrows"));
             Actions action = new Actions(Driver);
             action.DoubleClick(quantityField);
-            action.Build().Perform();
-            quantityField.SendKeys(quantity.ToString());
+            //action.Build().Perform();
+            //quantityField.SendKeys(quantity.ToString());
             action.KeyDown(Keys.Enter);
             action.KeyUp(Keys.Enter);
-            action.Build().Perform();
+            //action.Build().Perform();
         }
         public void VerifyIfICanBuy(int moneyToSpent)
         {
-            GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".notification notification--success")));
+            GetWait().Until(SeleniumExtras.WaitHelpers.ExpectedConditions.InvisibilityOfElementLocated(By.CssSelector(".total-item-price")));
             double totalPrice = double.Parse(totalPriceElement.Text.Replace("€", ""));
             Assert.IsTrue(moneyToSpent > totalPrice, $"Cannot by 3 Sonax with 50€, total price is {totalPrice}");
         }

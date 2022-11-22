@@ -11,6 +11,7 @@ namespace BaigiamasisDarbas.Page
     {
         private const string PageAddress = "https://www.mokivezi.lt";
         private IWebElement SearchField => Driver.FindElement(By.Id("search"));
+        private IWebElement QuantityField => Driver.FindElement(By.Id("sylius_add_to_cart_cartItem_quantity_9747"));
         private IWebElement SearchIcon => Driver.FindElement(By.CssSelector(".btn.btn-primary.header-search-form__submit-btn.medium-link"));
         private IWebElement PopUpClose => Driver.FindElement(By.CssSelector(".omnisend-form-63285e2b018728915f150e04-close-action"));
 
@@ -39,6 +40,11 @@ namespace BaigiamasisDarbas.Page
             SearchField.Click();
             SearchField.SendKeys(text);
             SearchIcon.Click();
+        }
+        public void NumberQuantity(string text)
+        {
+            QuantityField.Click();
+            QuantityField.SendKeys(text);
         }
     }
 }
