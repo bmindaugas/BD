@@ -8,8 +8,8 @@ namespace BaigiamasisDarbas.Test
         public static void TestSonaxPrice()
         {
             mokiveziHomePage.NavigateToPage();
-            mokiveziHomePage.CloseCookies();
             mokiveziHomePage.ClosePopUpWindow();
+            mokiveziHomePage.CloseCookies();
             mokiveziHomePage.SearchByText("langų ploviklis Sonax");
             mokiveziSearchResultPage.OrderByHighestPrice();
             mokiveziSearchResultPage.VerifyPrice("15,51 €");
@@ -19,8 +19,8 @@ namespace BaigiamasisDarbas.Test
         public static void Test3SonaxPrice()
         {
             mokiveziHomePage.NavigateToPage();
-            mokiveziHomePage.CloseCookies();
             mokiveziHomePage.ClosePopUpWindow();
+            mokiveziHomePage.CloseCookies();
             mokiveziHomePage.SearchByText("langų ploviklis Sonax");
             mokiveziSearchResultPage.OrderByHighestPrice();
             mokiveziSearchResultPage.AddToCart();

@@ -12,13 +12,13 @@ namespace BaigiamasisDarbas.Page
         private const string orderByHighestPriceText = "Brangiausios viršuje";
         private IWebElement goToCart => Driver.FindElement(By.CssSelector(".basket-btn__text.medium-link.mx-1.d-none.d-md-block"));
         IReadOnlyCollection<IWebElement> results => Driver.FindElements(By.CssSelector(".row.row--small-gutter.mt-5.product-catalog-container"));
-        private SelectElement orderByDropdown => new SelectElement(Driver.FindElement(By.CssSelector(".text-capitalize")));
+        private SelectElement orderByDropdown => new SelectElement(Driver.FindElement(By.XPath("//span[text()='rasti produktai']")));
 
         public MokiveziSearchResultPage(IWebDriver webdriver) : base(webdriver) { }
 
         public void OrderByHighestPrice()
         {
-            GetWait().Until(driver => driver.FindElement(By.CssSelector(".d-md-flex.justify-content-sm-between my-3 > h1")).Displayed);
+            GetWait().Until(driver => driver.FindElement(By.XPath("//span[text()='rasti produktai']")).Displayed);
             orderByDropdown.SelectByText(orderByHighestPriceText);
         }
 
